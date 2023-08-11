@@ -21,6 +21,7 @@ int _isdigit(int c)
 int _strlen(char *s)
 {
 	int i = 0;
+	
 	while (*s++)
 		i++;
 	return (i);
@@ -36,6 +37,7 @@ char *big_multiply(char *s1, char *s2)
 {
 	char *r;
 	int l1, l2, a, b, c, x;
+	
 	l1 = _strlen(s1);
 	l2 = _strlen(s2);
 	r = malloc(a = x = l1 + l2);
@@ -80,6 +82,7 @@ int main(int argc, char **argv)
 {
 	char *r;
 	int a, c, x;
+	
 	if (argc != 3)
 		printf("Error\n"), exit(98);
 	x = _strlen(argv[1]) + _strlen(argv[2]);
