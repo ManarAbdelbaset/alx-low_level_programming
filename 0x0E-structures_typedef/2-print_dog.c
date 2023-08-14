@@ -2,8 +2,8 @@
 #include <stdio.h>
 
 /**
- *print_dog - prints
- *@d: dog to print
+ *print_dog - print the struct declared for dog d
+ *@d: the new dog d of type struct
 */
 
 void print_dog(struct dog *d)
@@ -19,6 +19,6 @@ void print_dog(struct dog *d)
 		if (!(d->owner))
 			printf("owner: (nil)\n");
 		else
-			printf("owner: %s\n", (*d).owner);
+			printf("owner: %s\n", d->owner);
 	}
 }
