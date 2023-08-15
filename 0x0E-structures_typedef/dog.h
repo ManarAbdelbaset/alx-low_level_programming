@@ -10,10 +10,6 @@
  * Description: just a lone dog struct in a big kitty world
 */
 
-/**
- * dog_t - Typedef for struct dog
-*/
-
 struct dog
 {
 	char *name;
