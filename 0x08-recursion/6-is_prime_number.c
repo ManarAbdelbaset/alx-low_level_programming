@@ -17,12 +17,13 @@ int is_prime_number(int n)
 }
 
 /**
- * actual_prime - calculates if a number is prime recursively
+ * is_prime_helper - helper function to check if a number is prime recursively
  * @n: number to evaluate
  * @i: iterator
  *
  * Return: 1 if n is prime, 0 if not
  */
+
 int is_prime_helper(int n, int i)
 {
 	if (i == 1)
