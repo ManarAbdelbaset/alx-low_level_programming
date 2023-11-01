@@ -1,22 +1,5 @@
 #include <stdlib.h>
-
-/**
- * word_count - helper function to count the number of words in a string
- * @str: the string to analyze
- *
- * Return: the number of words in the string
- */
-int word_count(char *str)
-{
-	int i, count = 0;
-
-	for (i = 0; str[i]; i++)
-		if ((str[i] != ' ' && str[i + 1] == ' ') ||
-				(str[i] != ' ' && str[i + 1] == '\0'))
-			count++;
-
-	return (count);
-}
+#include <string.h>
 
 /**
  * strtow - splits a string into words
@@ -27,37 +10,35 @@ int word_count(char *str)
 char **strtow(char *str)
 {
 	char **words;
-	int i, j, k, l, word_start, word_end, word_length, count;
+	char *token;
+	int i = 0;
 
-	if (str == NULL || *str == '\0' || (str[0] == ' ' && str[1] == '\0'))
+	if (str == NULL || *str == '\0')
 		return (NULL);
 
-	count = word_count(str);
-	words = malloc((count + 1) * sizeof(char *));
+	words = malloc(sizeof(char *) * (strlen(str) + 1));
 	if (words == NULL)
 		return (NULL);
 
-	for (i = 0, l = 0; i < count; i++, l++)
+	token = strtok(str, " ");
+	while (token != NULL)
 	{
-		while (str[l] == ' ')
-			l++;
-		word_start = l;
-		while (str[l] != ' ' && str[l] != '\0')
-			l++;
-		word_end = l;
-		word_length = word_end - word_start;
-		words[i] = malloc((word_length + 1) * sizeof(char));
+		words[i] = malloc(sizeof(char) * (strlen(token) + 1));
 		if (words[i] == NULL)
 		{
-			for (j = 0; j < i; j++)
-				free(words[j]);
+			while (i >= 0)
+			{
+				i--;
+				free(words[i]);
+			}
 			free(words);
 			return (NULL);
 		}
-		for (k = 0; k < word_length; k++)
-			words[i][k] = str[word_start + k];
-		words[i][k] = '\0';
+		strcpy(words[i], token);
+		i++;
+		token = strtok(NULL, " ");
 	}
 	words[i] = NULL;
+
 	return (words);
 }
