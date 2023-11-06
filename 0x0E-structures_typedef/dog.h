@@ -10,9 +10,12 @@
  * Description: A structure type that defines a dog
  * with its name, age, and owner.
  */
+
 struct dog
 {
 	char *name;
 	float age;
 	char *owner;
 };
+
+#endif
