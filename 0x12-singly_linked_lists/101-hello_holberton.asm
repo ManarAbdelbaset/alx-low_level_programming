@@ -1,20 +1,21 @@
-section .data
-    hello db "Hello, Holberton", 0
-    format db "%s", 0
+extern printf
 
 section .text
-    global main
-    extern printf
+global main
 
 main:
-    ; Prepare the arguments for printf
-    mov rdi, format
-    mov rsi, hello
-    xor rax, rax
+push rbp
 
-    ; Call printf
-    call printf
+mov rdi, fmt
+mov rsi, msg
+mov rax, 0
+call printf
 
-    ; Exit the program
-    mov eax, 0
-    ret
+pop rbp
+
+mov rax, 0
+ret
+
+section .data
+msg: db "Hello, Holberton", 0
+fmt: db "%s", 10, 0
